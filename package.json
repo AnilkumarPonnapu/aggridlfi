@@ -1,5 +1,5 @@
 {
-  "name": "new-lfi-ui-aggrid",
+  "name": "@anilkumar779943/new-lfi-ui-aggrid",
   "version": "0.0.3",
   "description": "",
   "main": "index.ts",
@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ag-grid-community": "^32.0.0",
+    "ag-grid-react": "^32.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
