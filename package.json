@@ -2,20 +2,16 @@
   "name": "@anilkumar779943/new-lfi-ui-aggrid",
   "version": "0.0.6",
   "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production"
   },
-  "files": [
-    "dist"
-  ],
   "keywords": [],
-  "author": "anil",
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "@anilkumar779943/new-lfi-ui-aggrid": "^0.0.4",
     "ag-grid-community": "^32.0.0",
     "ag-grid-react": "^32.0.0",
     "react": "^18.3.1",

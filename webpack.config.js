@@ -1,15 +1,14 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const packageJson = require('./package.json'); // Assuming packageJson is imported
 
 module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    library: 'myReactComponent',
     libraryTarget: 'umd',
-    umdNamedDefine: true,
     globalObject: 'this',
   },
   resolve: {
@@ -42,12 +41,7 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      async: false,
-      typescript: {
-        configFile: './tsconfig.json',
-      },
-    }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
   devtool: 'source-map',
 };
