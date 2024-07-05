@@ -1,47 +1,35 @@
 const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const packageJson = require('./package.json'); // Assuming packageJson is imported
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    library: 'myReactComponent',
     libraryTarget: 'umd',
-    globalObject: 'this',
+    umdNamedDefine: true
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.css'],
+    extensions: ['.ts', '.tsx', '.js']
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
   },
   externals: {
     react: 'react',
-    'react-dom': 'react-dom',
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()],
-  },
-  plugins: [
-    new ForkTsCheckerWebpackPlugin(),
-  ],
-  devtool: 'source-map',
+    'react-dom': 'react-dom'
+  }
 };
