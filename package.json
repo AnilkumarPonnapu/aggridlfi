@@ -1,8 +1,13 @@
 {
   "name": "@anilkumar779943/new-lfi-ui-aggrid",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A personalised ui library",
   "main": "dist/bundle.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "webpack --mode production",
     "start": "set PORT=4200 &&  react-scripts start",

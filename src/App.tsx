@@ -1,4 +1,7 @@
 import React from 'react';
+import { LFiFirm } from './components';
+
+
 
 // import GridTable from "./components/Aggrid"
 
@@ -21,7 +24,7 @@ const App = () => {
 
   return (
     <div>
-   
+     
     </div>
   );
 };
