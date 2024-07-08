@@ -1,5 +1,7 @@
 import React from 'react';
-import GridTable from "./components/Aggrid"
+// import GridTable from "./components/Aggrid"
+import Button from './components/Button';
+import GridTable from './components/AgGridtable';
 const App = () => {
   // Dummy data for rows
   const dummyRowData = [
@@ -18,12 +20,10 @@ const App = () => {
 
   return (
     <div>
-      <h1>My React App with Ag-Grid</h1>
-      <GridTable
-        rowData={dummyRowData}
-        columnDefs={dummyColumnDefs}
-        classNameCss="my-custom-class"
-      />
+      <Button label={''} onClick={function (): void {
+        throw new Error('Function not implemented.');
+      } }/>
+      <GridTable rowData={dummyRowData} columnDefs={dummyColumnDefs}/>
     </div>
   );
 };

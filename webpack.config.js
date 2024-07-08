@@ -1,16 +1,20 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const glob = require('glob');
 
 module.exports = {
-  entry: './src/index.tsx', // Ensure this path is correct
+  entry: glob.sync('./src/components/**/index.tsx').reduce((entries, filePath) => {
+    const entryName = path.basename(path.dirname(filePath));
+    entries[entryName] = filePath;
+    return entries;
+  }, {}),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    library: 'MyComponentLibrary',
+    filename: '[name]/index.js', // Outputs each component in its own directory
+    library: '[name]',
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    clean: true, // Clean the output directory before emit.
+    clean: true,
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -36,10 +40,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
+    new MiniCssExtractPlugin({
+      filename: '[name]/styles.css', // Outputs each component's styles in its own directory
     }),
-    new MiniCssExtractPlugin(),
   ],
   externals: {
     react: {
@@ -56,10 +59,8 @@ module.exports = {
     },
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
+    contentBase: path.join(__dirname, 'public'),
     compress: true,
-    port: 4201,
+    port: 8080,
   },
 };
