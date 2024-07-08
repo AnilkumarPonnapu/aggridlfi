@@ -5,7 +5,7 @@ type ButtonProps = {
   onClick: () => void;
 };
 
-const Button = ({ label, onClick }: ButtonProps) => {
+const LFiFirm = ({ label, onClick }: ButtonProps) => {
   return (
     <div>
       <button
@@ -18,4 +18,4 @@ const Button = ({ label, onClick }: ButtonProps) => {
   );
 };
 
-export default Button;
+export default LFiFirm;
